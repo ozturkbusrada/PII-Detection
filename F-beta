@@ -1,0 +1,39 @@
+"""
+We are assessing the performance of a medical test in our example. Given a precision of 0.1 and a recall of 0.9 for our model, we can calculate the F-beta score (with beta=5) using the following steps
+Given Values: 
+True Positives (TP): 90 (Correctly estimated number of people with true disease) > Gerçek hastalığı olan kişilerin doğru olarak tahmin edilen sayısı
+False Positives (FP): 810 (Number of actually healthy people incorrectly predicted to be diseased) > Hastalığı olmayan kişilerin yanlışlıkla hastalıklı olarak tahmin edilen sayısı
+False Negatives (FN): 10 (Number of people mistakenly estimated as healthy who were actually diseased) > Hastalığı olan kişilerin yanlışlıkla sağlıklı olarak tahmin edilen sayısı
+True Negatives (TN): 90 (Correctly estimated number of actually healthy people) > Gerçekten sağlıklı olan kişilerin doğru olarak tahmin edilen sayısı
+"""
+
+true_positives = 90  # Number of correctly predicted cases of true disease > Gerçek hastalığı doğru tahmin edilen sayısı
+false_positives = 810  # Number of cases incorrectly predicted as diseased when they do not have the disease > Hastalığı olmayanların yanlışlıkla hastalıklı olarak tahmin edilen sayısı
+false_negatives = 10  # Number of cases incorrectly predicted as healthy when they have the disease > Hastalığı olanların yanlışlıkla sağlıklı olarak tahmin edilen sayısı
+
+
+# Calculate Precision
+precision = true_positives / (true_positives + false_positives)
+
+# Calculate Recall
+recall = true_positives / (true_positives + false_negatives)
+
+
+# Beta 
+beta = 5
+
+
+# Calculate F-Beta Score
+numerator = (1 + beta ** 2) * precision * recall      # (1 + beta^2) * precision * recall > F-beta skorunun pay kısmını temsil eder
+denominator = (beta ** 2 * precision) + recall        # (beta^2 * precision) + recall > F-beta skorunun payda kısmını temsil eder
+f_beta_score = numerator / denominator
+
+# Print F-Beta Score
+print("Precision:", precision)
+print("Recall:", recall)
+print("F-beta Skoru (beta={}):".format(beta), f_beta_score)
+
+
+
+
+
